@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Final Assignment</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+  if (typeof jQuery == 'undefined') {
+  document.write(unescape("%3Cscript src='../../Shared/jquery-1.11.3.js' type='text/javascript'%3E%3C/script%3E")); }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+         $("#getFeedback").click( function() {
+             
+             ///////////////////////////TOPPINGS SELECTION///////////////////////////////////////////////
+            var startingText = "Your total toppping is ";
+			var total = 0;
+			if( $('#topping2').is(':checked') )
+        	total= total +1;
+
+			if( $('#topping3').is(':checked') )
+        	total= total +1;
+				
+			if( $('#topping4').is(':checked') )
+        	total= total +1;
+
+			if( $('#topping5').is(':checked') )
+        	total= total +1;
+			
+			if( $('#topping6').is(':checked') )
+        	total= total +1;
+           
+			if( $('#topping7').is(':checked') )
+        	total= total +1;
+           
+           if( $('#topping8').is(':checked') )
+        	total= total +1;
+             
+             
+             ////////
+              
+             
+             /////
+       		$("#msgHere").html( startingText + total ); 
+             
+             alert(">>Toppings>>" + total + "<<<");
+             
+             
+              ////////////////////////////SET LIMIT OF CHECKBOXES///////////////////////////////////////////////
+             
+             var limit = 3;
+        $('.limit').on('change', function(evt) {
+          if ($('.limit:checked').length > limit) {
+          this.checked = false;
+          alert('You can select only ' + limit + ' Toppings');
+    }
+             
+        
+  });
+             
+             
+             /////////////////////////TOTAL OF PIZZA////////////////////////////////////////////////////////////
+             var whichOne = $('input:radio[name=Size]:checked').val();
+             var whichOne1 = $('input:radio[name=Crust]:checked').val();
+             
+			alert(">>>" + whichOne + "<<<"); 
+			alert(">>>" + whichOne1 + "<<<");
+            
+			if( whichOne == "small" && whichOne1 == "thin" )
+	        $("#msgHere").html( "PizzaCost = " + (12 +  total) + "$");
+            //$("#msgHere").css("background-color", "orange");
+             
+            else if( whichOne == "small" && whichOne1 == "reg" )
+	           $("#msgHere").html( "PizzaCost = " + (14 +  total) + "$");
+             
+             else if( whichOne == "small" && whichOne1 == "deep-dish" )//NO QUOTES
+	           $("#msgHere").html( "PizzaCost = " + (16 +  total) + "$");
+            
+             ////////////////////////////////////////////////////////
+            
+            else if( whichOne == "med" && whichOne1 == "thin" )//NO QUOTES
+	           $("#msgHere").html( "PizzaCost = " + (15 +  total *2) + "$");
+            
+            else if( whichOne == "med" && whichOne1 == "reg" )//NO QUOTES
+	           $("#msgHere").html( "PizzaCost = " + (17 +  total *2) + "$");
+            
+             else if( whichOne == "med" && whichOne1 == "deep-dish" )//NO QUOTES
+	           $("#msgHere").html( "PizzaCost = " + (21 +  total *2) + "$");
+            
+             /////////////////////////////////////////////////////////
+            
+            else if( whichOne == "large" && whichOne1 == "thin" )//NO QUOTES
+	           $("#msgHere").html( "PizzaCost = " + (18 +  total *3) + "$");
+            
+            else if( whichOne == "large" && whichOne1 == "reg" )//NO QUOTES
+	           $("#msgHere").html( "PizzaCost =" + (21 +  total *3) + "$");
+            
+            else if( whichOne == "large" && whichOne1 == "deep-dish" )//NO QUOTES
+	           $("#msgHere").html( "PizzaCost = " + (26 +  total *3) + "$");
+             
+ });
+                 
+});
+</script>
+
+<style type="text/css">
+.auto-style1 {
+	margin-left: 40px;
+}
+.auto-style2 {
+	background-color: #94FC94;
+}
+    
+    body{
+        color: white;
+        font-family: cursive;
+        
+    }
+    h2 {
+        font: 50px;
+        font-family:cursive;
+    }
+    
+    h4{
+        font: 35px;
+        font-family: fantasy;
+    }
+    
+</style>
+
+</head>
+
+<body background="pz.png">
+
+<h2 style="text-align:center;">Welcome to BIT116 Pizza</h2>
+    <!--<img src="pizza-hut-cmo-sp.jpg" style="width:200px;height:120px;"> -->
+<h4>CREATE YOUR OWN PIZZA</h4>
+<form>
+    <ul><li  style="color:orange">All pizzas come with cheese included.</li></ul>
+    
+    <ol><li><p>Select Size :</p></li>
+	<p><input type="radio" name="Size" value="small">Small</p>
+    <p><input type="radio" name="Size" value="med">Medium</p>
+    <p><input type="radio" name="Size" value="large">Large</p>
+        
+        <li>Select Crust :</li>
+    <p><input type="radio" name="Crust" value="thin">Thin</p>
+    <p><input type="radio" name="Crust" value="reg">Regular</p>
+    <p><input type="radio" name="Crust" value="deep-dish">Deep-Dish</p>
+        
+          <li>Select Sauces:</li>
+    <p><input type="radio" name="Sauces" value="red">Red</p>
+    <p><input type="radio" name="Sauces" value="white">White</p>
+    <p><input type="radio" name="Sauces" value="green">Green</p>
+        
+        <li>Select Toppings </li>
+        <form >
+        <p><input type="checkbox" id="topping2" class="limit">Pepperoni</p>
+        <p ><input type="checkbox" id="topping3" class="limit">Onion</p>
+        <p ><input type="checkbox" id="topping4" class="limit">Sausage</p>
+        <p ><input type="checkbox" id="topping5" class="limit">Mushrooms</p>
+        <p ><input type="checkbox" id="topping6" class="limit">Peppers</p>
+        <p><input type="checkbox" id="topping7" class="limit">Olives</p>
+        <p><input type="checkbox" id="topping8" class="limit">Garlic</p>
+            <input type="button" id="getFeedback" value="Click here to see Total!">
+            
+        </form>
+        
+    </ol>
+    
+  </form>
+    <p id="msgHere" style="font-size:30px; font-weight:bold;">See Your Total here</p>
+    
+
+</body>
+</html>
+
